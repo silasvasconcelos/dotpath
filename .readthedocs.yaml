@@ -9,8 +9,8 @@ build:
   tools:
     python: "3.11"
   commands:
-    # Install the package with docs dependencies
-    - python -m pip install --upgrade pip
-    - python -m pip install -e ".[docs]"
+    - pip install uv
+    # Install the package with docs dependencies using uv
+    - uv sync --frozen
     # Build the documentation with Sphinx
-    - python -m sphinx -T -b html -d docs/_build/doctrees -D language=en docs $READTHEDOCS_OUTPUT/html
+    - uv run python -m sphinx -T -b html -d docs/_build/doctrees -D language=en docs $READTHEDOCS_OUTPUT/html
